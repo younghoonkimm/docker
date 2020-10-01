@@ -1,0 +1,10 @@
+DROP DATABASE IF EXISTS testData;
+
+CREATE DATABASE testData;
+USE testData;
+
+CREATE TABLE lists(
+    id INTEGER AUTO_INCREMENT,
+    value TEXT,
+    PRIMARY KEY(id)
+);
