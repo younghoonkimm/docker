@@ -6,18 +6,18 @@ services:
   - docker
 
 before install:
-  - docker build -t kimyounghoon/react-docker-app -f ./frontend/Dockerfile.dev ./frontend
+  - docker build -t kyh0404/react-docker-app -f ./frontend/Dockerfile.dev ./frontend
 
 script:
-  - docker run -e CI=true kimyounghoon/react-docker-app  npm run test
+  - docker run -e CI=true kyh0404/react-docker-app  npm run test
 
 after success:
-  - docker build -t kimyounghoon/docker-frontend ./frontend
-  - docker build -t kimyounghoon/docker-backend ./backend
-  - docker build -t kimyounghoon/docker-nginx ./nginx
+  - docker build -t kyh0404/docker-frontend ./frontend
+  - docker build -t kyh0404/docker-backend ./backend
+  - docker build -t kyh0404/docker-nginx ./nginx
 
-  - docker login -u "$DOCKER_HUB_ID" -p "$DOCKER_HUB_PASSWORD docker.io
+  - echo "$DOCKER_HUB_PASSWORD | docker login -u "$DOCKER_HUB_ID" --password-stdin
 
-  - docker push kimyounghoon/docker-frontend
-  - docker push kimyounghoon/docker-backend
-  - docker push kimyounghoon/docker-nginx
+  - docker push kyh0404/docker-frontend
+  - docker push kyh0404/docker-backend
+  - docker push kyh0404/docker-nginx
