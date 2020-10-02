@@ -16,7 +16,7 @@ after success:
   - docker build -t kimyounghoon/docker-backend ./backend
   - docker build -t kimyounghoon/docker-nginx ./nginx
 
-  - echo "$DOCKER_HUB_PASSWORD | docker login -u "$DOCKER_HUB_ID" --password-stdin
+  - docker login -u "$DOCKER_HUB_ID" -p "$DOCKER_HUB_PASSWORD docker.io
 
   - docker push kimyounghoon/docker-frontend
   - docker push kimyounghoon/docker-backend
