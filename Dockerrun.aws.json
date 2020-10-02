@@ -1,9 +1,9 @@
 {
   "AWSEBDockerrunVersion": 2,
-  "containerDefintions": [
+  "containerDefinitions": [
     {
       "nane": "frontend",
-      "image": "kyh0404/docker=frontend",
+      "image": "kyh0404/docker-frontend",
       "hostname": "frontend",
       "essential": false,
       "memory": 128
@@ -23,7 +23,7 @@
       "portMappings": [
         {
           "hostPort": 80,
-          "contianerPort": 80
+          "containerPort": 80
         }
       ],
       "links": ["frontend", "backend"],
