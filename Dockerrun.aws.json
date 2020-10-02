@@ -2,7 +2,7 @@
   "AWSEBDockerrunVersion": 2,
   "containerDefinitions": [
     {
-      "nane": "frontend",
+      "name": "frontend",
       "image": "kyh0404/docker-frontend",
       "hostname": "frontend",
       "essential": false,
