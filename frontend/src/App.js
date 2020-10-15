@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
 import axios from 'axios';
+import styled from 'styled-components';
+import { Input } from 'antd';
+import 'antd/dist/antd.css';
+
+const { Search } = Input;
+const Wrapper = styled.div`
+  margin: 0 auto;
+  width: 400px;
+  height: auto;
+`;
 
 function App() {
   useEffect(() => {
@@ -19,12 +28,12 @@ function App() {
   const [lists, setLists] = useState([]);
   const [value, setValue] = useState('');
 
-  const changeHandler = (event) => {
-    setValue(event.currentTarget.value);
+  const changeHandler = (e) => {
+    setValue(e.currentTarget.value);
   };
 
-  const submitHandler = (event) => {
-    event.preventDefault();
+  const submitHandler = (e) => {
+    e.preventDefault();
     axios.post('/api/value', { value: value }).then((response) => {
       if (response.data.success) {
         console.log('response', response.data);
@@ -36,20 +45,22 @@ function App() {
     });
   };
 
+  const deletHandler = (e) => {
+    e.preventDefault();
+    axios.post('/api/values');
+  };
+
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <div className='container'>
-          {lists && lists.map((list, index) => <li key={index}>{list.value} </li>)}
-          <br />
-          안녕하세요.
-          <form className='example' onSubmit={submitHandler}>
-            <input type='text' placeholder='입력해주세요...' onChange={changeHandler} value={value} />
-            <button type='submit'>확인.</button>
-          </form>
-        </div>
-      </header>
-    </div>
+    <Wrapper>
+      {lists && lists.map((list, index) => <li key={index}>{list.value} </li>)}
+      <br />
+      안녕하세요.
+      <form className='example' onSubmit={submitHandler}>
+        <Search loading enterButton type='text' placeholder='입력해주세요...' onChange={changeHandler} value={value} />
+      </form>
+      {lists && lists.map((list, index) => <li key={index}>{list.value} </li>)}
+      <br />
+    </Wrapper>
   );
 }
 
