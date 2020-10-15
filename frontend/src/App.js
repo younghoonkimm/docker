@@ -12,6 +12,10 @@ const Wrapper = styled.div`
   height: auto;
 `;
 
+const ListItem = styled(List.Item)`
+  height: 100%;
+`;
+
 function App() {
   useEffect(() => {
     axios.get('/api/hi').then((response) => {
@@ -62,16 +66,16 @@ function App() {
       <List>
         {lists &&
           lists.map((list, index) => (
-            <List.Item
+            <ListItem
               key={index}
               actions={[
-                <Button onClick={() => deletHandler()} key='list-loadmore-edit'>
+                <Button onClick={(e) => deletHandler(e)} key='list-loadmore-edit'>
                   삭제
                 </Button>,
               ]}
             >
               {list.value}{' '}
-            </List.Item>
+            </ListItem>
           ))}
       </List>
       <br />
