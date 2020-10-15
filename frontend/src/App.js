@@ -48,7 +48,7 @@ function App() {
 
   const deletHandler = (e) => {
     e.preventDefault();
-    axios.post('/api/values');
+    lists.filter((list) => list !== list);
   };
 
   return (
@@ -65,8 +65,9 @@ function App() {
             <List.Item
               key={index}
               actions={[
-                <Button key='list-loadmore-edit'>delete</Button>,
-                <Button key='list-loadmore-more'>more</Button>,
+                <Button onClick={() => deletHandler()} key='list-loadmore-edit'>
+                  삭제
+                </Button>,
               ]}
             >
               {list.value}{' '}
