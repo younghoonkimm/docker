@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import { Input } from 'antd';
+import { Input, List, Button } from 'antd';
 import 'antd/dist/antd.css';
 
 const { Search } = Input;
+
 const Wrapper = styled.div`
   margin: 0 auto;
   width: 400px;
@@ -58,7 +59,20 @@ function App() {
       <form className='example' onSubmit={submitHandler}>
         <Search loading enterButton type='text' placeholder='입력해주세요...' onChange={changeHandler} value={value} />
       </form>
-      {lists && lists.map((list, index) => <li key={index}>{list.value} </li>)}
+      <List>
+        {lists &&
+          lists.map((list, index) => (
+            <List.Item
+              key={index}
+              actions={[
+                <Button key='list-loadmore-edit'>delete</Button>,
+                <Button key='list-loadmore-more'>more</Button>,
+              ]}
+            >
+              {list.value}{' '}
+            </List.Item>
+          ))}
+      </List>
       <br />
     </Wrapper>
   );
