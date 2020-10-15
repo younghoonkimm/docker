@@ -52,9 +52,9 @@ function App() {
 
   return (
     <Wrapper>
-      {lists && lists.map((list, index) => <li key={index}>{list.value} </li>)}
       <br />
-      안녕하세요.
+      Docker build
+      <br />
       <form className='example' onSubmit={submitHandler}>
         <Search loading enterButton type='text' placeholder='입력해주세요...' onChange={changeHandler} value={value} />
       </form>
