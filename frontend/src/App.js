@@ -25,7 +25,6 @@ function App() {
 
   const submitHandler = (event) => {
     event.preventDefault();
-
     axios.post('/api/value', { value: value }).then((response) => {
       if (response.data.success) {
         console.log('response', response.data);
@@ -40,21 +39,15 @@ function App() {
   return (
     <div className='App'>
       <header className='App-header'>
-        {/* <div className='container'>
-          {lists &&
-            lists.map((list, index) => <li key={index}>{list.value} </li>)}
+        <div className='container'>
+          {lists && lists.map((list, index) => <li key={index}>{list.value} </li>)}
           <br />
           안녕하세요.
           <form className='example' onSubmit={submitHandler}>
-            <input
-              type='text'
-              placeholder='입력해주세요...'
-              onChange={changeHandler}
-              value={value}
-            />
+            <input type='text' placeholder='입력해주세요...' onChange={changeHandler} value={value} />
             <button type='submit'>확인.</button>
           </form>
-        </div> */}
+        </div>
       </header>
     </div>
   );
